@@ -2,7 +2,6 @@
 import gradio as gr
 
 import requests
-import json
 def askAPI(question):
     url = "http://localhost:5001/ask"
     headers = {
@@ -38,9 +37,11 @@ def askAPI4PD(question):
 #def askapi(name):
 #    return f'Hello {name}!'
 
-iface1 = gr.Interface(fn=askAPI, inputs="text", outputs="text")
-iface2 = gr.Interface(fn=askAPI4PD, inputs="text", outputs="text")
+# iface1 = gr.Interface(fn=askAPI, inputs="text", outputs="text")
+# iface2 = gr.Interface(fn=askAPI4PD, inputs="text", outputs="text")
 
+iface1 = gr.Interface(fn=askAPI, inputs="text", outputs="text",api_name="askai")
+iface2 = gr.Interface(fn=askAPI4PD, inputs="text", outputs="text",api_name="askai4pd")
 # iface1.launch(share=True)
 demo = gr.TabbedInterface([iface1, iface2], ["AskAI", "AskAI4PD"])
 
