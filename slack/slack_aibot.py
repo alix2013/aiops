@@ -12,9 +12,9 @@ load_dotenv(dotenv_path="slack.env")
 logging.info(f"API_SERVER_URL:{os.environ.get('API_SERVER_URL')}")
 from apiclient import askAI
 
-token =  str(os.environ.get('SLACK_TOKEN'))  #xoxb-6403889000609-6414071128352-eM0giDeIkIVpFS9TvFCYRu7cX
-app_level_token= str(os.environ.get('SLACK_APP_TOKEN'))    #"xapp-1-A06BE9WQ4KX-6391244140643-c3a2627a05345503c91e728af209a4df83188aad7c9040df54905657070ddb06"
-user_id=str(os.environ.get("SLACK_USER_ID"))   #"U06C6233SAC"
+token =  str(os.environ.get('SLACK_TOKEN')) 
+app_level_token= str(os.environ.get('SLACK_APP_TOKEN'))   
+user_id=str(os.environ.get("SLACK_USER_ID"))  
 
 logging.info(f"userID:{user_id}, token:{token}, app_level_token:{app_level_token}")
 
