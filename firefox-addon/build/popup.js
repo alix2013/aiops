@@ -1,0 +1,1 @@
+window.addEventListener("DOMContentLoaded",function(){document.getElementById("textArea").value=window.response});window.onblur=function(){window.close()};

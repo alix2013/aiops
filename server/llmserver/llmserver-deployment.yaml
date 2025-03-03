@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: llmserver
+  name: llmserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: llmserver
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: llmserver
+    spec:
+      containers:
+      - image: quay.io/anlixue/llmserver:v1.1
+        name: llmserver
+#        env:
+#        - name: OLLAMA_MODELS
+#          value: /llm/models
+#        - name: OLLAMA_HOST
+#          value: 0.0.0.0:6666
+        resources: {}
+        securityContext:
+          runAsUser: 1000
+      #        nodeName: compute-1-ru25.hci1.pbm.ihost.com
+      nodeSelector:
+        nvidia.com/gpu.deploy.driver: "true"
+
+
+

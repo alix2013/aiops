@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: chatserver
+  name: chatserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chatserver
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: chatserver
+    spec:
+      containers:
+      - image: quay.io/anlixue/aiserver:v1.3
+        name: aiserver
+        command: ["/app/startchatserver.sh"]
+        volumeMounts:
+          - mountPath: "/app/cache"
+            name: emmodel-pvc
+          - mountPath: "/app/DB"
+            name: db-pvc
+        env:
+        - name: LLM_SERVER_URL
+          value: http://llmserver 
+        - name: LLM_SERVER_TYPE
+          value: local
+        - name: SENTENCE_TRANSFORMERS_HOME
+          value: /app/cache          
+        - name: MODEL_NAME
+          value: neural-chat 
+        - name: MODEL_TEMPERATURE
+          value: "0.2" 
+        - name: ACTION_MODEL_NAME
+          value: neural-chat 
+        - name: ACTION_MODEL_TEMPERATURE
+          value: "0"
+        - name: EMBEDDING_MODEL_NAME
+          value: hkunlp/instructor-large
+        - name: DB_DIRECTORY
+          value: /app/DB
+        - name: CHAT_UI_TITLE
+          value: Backup & Restore Visionary v1
+        - name: CHAT_UI_INPUT_PLACEHOLDER
+          value: For now, we only provide support for Backup & Restore on IBM Storage Fusion.
+        - name: CHAT_UI_PORT
+          value: "5006"
+        - name: OCP_API_SERVER
+          value: "https://api.bnr-sno-honda.fusion-sno-ibm.com:6443"          
+        - name: OCP_LOGIN_TOKEN
+          value: "sha256~GesXwBuGexQ4DTACEc3EhYk1DDBrYX8PUQ_SUS-k-H4"
+      volumes:
+        - name: emmodel-pvc
+          persistentVolumeClaim:
+            claimName: chatserver-emmodel-pvc
+        - name: db-pvc
+          persistentVolumeClaim:
+            claimName: chatserver-db-pvc
+
+

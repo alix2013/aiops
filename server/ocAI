@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+import logging
+logging.disable()
+import subprocess
+import sys
+
+def askAI(question):
+    from llmbase import getModel
+    from langchain.prompts import PromptTemplate
+    from langchain.chains import LLMChain
+
+    llm = getModel(temperature=0)
+    prompt = PromptTemplate(
+        input_variables=["input"],
+        template="""You are kubernetes cluster administrator, here is the kubectl command output, 
+        give explaination about the output, if there are warning, errors, please give advices to fix it
+        {input}
+        """
+    )
+
+    chain = LLMChain(llm=llm, prompt=prompt, verbose=False)
+    chain.run(question)
+
+if __name__ == "__main__":
+    args = [*sys.argv[1:]]  
+    result = subprocess.run(["oc"] + args, capture_output=True)
+    if result.returncode != 0 :
+       oc_result = result.stderr.decode()
+    else: 
+      oc_result = result.stdout.decode()
+    print(oc_result)
+    if len(args) != 0 and len(oc_result) != 0: 
+        print("-"*80 + "\nAI Analysis Result:")
+        cmd_result = f"kubectl {' '.join(args) } \n{oc_result}"
+        askAI(cmd_result)
+

@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: train
+  name: train
+spec:
+  containers:
+  - command:
+    - tail
+    - -f
+    - /dev/null
+    image: nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04
+    name: train
+    volumeMounts:
+      - mountPath: "/app"
+        name: app-pvc
+    securityContext:
+      runAsUser: 0
+      privileged: true
+
+    resources: {}
+  serviceAccountName: sapriv
+  nodeSelector:
+  nvidia.com/gpu.deploy.driver: "true"
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+
+  volumes:
+    - name: app-pvc
+      persistentVolumeClaim:
+        claimName: my-share-pvc  
+
+status: {}
+
+

@@ -1,0 +1,45 @@
+<!-- <!DOCTYPE html> -->
+<html>
+<head>
+   <title>Ask AI</title>
+   <style>
+      h5 {
+        font-size: 24px; /* Adjust the font size as needed */
+        margin-bottom: 5px;
+      }
+      /* Container Styles */
+      .container {
+         margin-top: 10px;
+         font-size: 16px;
+         display: flex;
+         flex-direction: column; /* Change to row for horizontal alignment */
+      }
+      /* Input Field Styles for #inputField */
+      .container #inputField,
+      .container #chatInputField {
+         margin-top: 10px; /* Adjust margin-top as needed */
+         font-size: 16px;
+         width: 500px; 
+      }
+      /* Button Styles */
+      #submitButton {
+        margin-top: 20px;
+        font-size: 16px;
+        width: 70px;
+      }
+    </style>
+</head>
+<body>
+  <h5>Configuration option</h5>
+   <div class="container">
+      API Server URL: <input type="text" id="inputField" placeholder="http://aiserver:5000">
+      <br>
+      Chat Server URL:<input type="text" id="chatInputField" placeholder="http://aiserver:5006">
+      <br>
+      <button id="submitButton">Submit</button>
+   </div>
+  <br>
+
+<script src="option.js"> </script>
+</body>
+</html>

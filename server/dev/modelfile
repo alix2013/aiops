@@ -1,0 +1,3 @@
+FROM /Users/alex/Downloads/fusion-m1a_8k.gguf
+TEMPLATE "[INST] {{ .Prompt }} [/INST]"
+

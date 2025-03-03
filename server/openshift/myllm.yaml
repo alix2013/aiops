@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: llmserver
+  name: llmserver
+spec:
+  containers:
+  - name: llmserver
+    image: ollama/ollama
+    env:
+      - name: OLLAMA_MODELS
+        value: /tmp
+      - name: OLLAMA_HOST
+        value: "0.0.0.0:80"
+  restartPolicy: Always
+  nodeName: compute-1-ru25.hci1.pbm.ihost.com 
+status: {}

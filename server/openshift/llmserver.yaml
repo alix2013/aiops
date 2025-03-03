@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: llmserver
+  name: llmserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: llmserver
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: llmserver
+    spec:
+      containers:
+      - image: quay.io/anlixue/llmserver:v1.0
+        name: llmserver
+        env:
+        # - name: OLLAMA_MODELS
+        #   value: /tmp
+        - name: OLLAMA_HOST
+          value: 0.0.0.0:6666
+        resources: {}
+        nodeName: compute-1-ru25.hci1.pbm.ihost.com 
+status: {}

@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+  "name": "Ask AI",
+  "version": "1.0",
+  "description": "Ask AI to get advices",
+  "permissions": ["contextMenus", "activeTab", "tabs","clipboardWrite","clipboardRead",
+    "windows","storage","tts"],
+  "background": {
+    "scripts": ["aiops.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "options_page":  "option.html",
+  "browser_action": {
+    "default_popup": "home.html"
+  },
+  "web_accessible_resources": [
+    "popup.html"
+  ]
+}
+

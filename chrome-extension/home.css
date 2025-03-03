@@ -1,0 +1,87 @@
+/* CSS file (home.css) */
+body {
+        height: 600px; /* max: 750px */
+        width: 650px; /* max: 1000px */
+}
+/* Typography and Colors */
+.main-title {
+  font-size: 16px;
+  color: #069;
+  margin-bottom: 5px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+}
+.input-container {
+  display: flex;
+}
+#inputField {
+  flex-grow: 1;
+  /* height: 50px; */
+  font-size: 18px;
+}
+#submitButton {
+  width: auto;
+  font-size: 16px;
+}
+#responseTextArea {
+  flex-grow: 1;
+  width: 99%;
+}
+
+#chatButton {
+  margin-top: 10px;
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  font-family: arial, sans-serif; /*input has OS specific font-family*/
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* /* Container Styles */ 
+/* .container { */
+/*   display: flex; */
+/*   border: 1px solid black; */
+/*   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); */
+/* } */
+
+/* /* Input Field Styles */ 
+/* .container #inputField { */
+  /* flex: 1; */
+  /* font-size: 16px; */
+/* } */
+
+/* #inputField { */
+  /* font-size: 16; */
+/* } */
+/* Button Styles */
+/* #submitButton { */
+/*   font-size: 16px; */
+/* } */
+
+/* #chatButton { */
+/*   margin-top: 10px; */
+/*   background: none!important; */
+/*   border: none; */
+/*   padding: 0!important; */
+/*   font-family: arial, sans-serif; /*input has OS specific font-family*/ 
+/*   color: #069; */
+/*   text-decoration: underline; */
+/*   cursor: pointer; */
+/*   font-size: 16px; */
+/*   font-weight: bold; */
+/* } */
+
+/* Response Text Area Styles */
+/* #responseTextArea { */
+/*   margin-bottom: 20px; */
+/*   border: 1px solid black; */
+/*   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); */
+/* } */

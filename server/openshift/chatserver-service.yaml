@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: chatserver
+  name: chatserver
+spec:
+  ports:
+  - port: 5006
+    protocol: TCP
+    targetPort: 5006
+  selector:
+    app: chatserver
+  sessionAffinity: None
+  type: ClusterIP
