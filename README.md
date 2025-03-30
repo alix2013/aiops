@@ -21,7 +21,7 @@
 可以部署在OCP cluster上，部署所需要的yaml文件放在openshift目录。  
 - 可以通过配置指定和切换不同的开源MODEL，也可以用商用的比如OpenAI的model, 测  
 试用的知识库MODEL是mistral 7b的小模型即可， ACTION MODEL对模型要求较高,本项目  
-使用了在Mistral基础上fine tuned  neural-chat MODE  
+使用了fine tuned的MODEL  
 
 ## Architecture
 ![Architecture](https://github.ibm.com/anlixue/aiops/blob/main/architecture.jpg)
@@ -111,25 +111,18 @@ Configure .env file or export as system environment variables
 # Large Language Model Server Configuration
 
 LLM_SERVER_URL="http://localhost:12345"
-#LLM_SERVER_URL="https://postcard-ut-renew-richardson.trycloudflare.com"
+#LLM_SERVER_URL="https://LLMServer_URL"
 
 # SERVER_TYPE is openai compatible or not
-# LLM_SERVER_TYPE="openai"
+# LLM_SERVER_TYPE="openai" | "non-openapi"
 
 #MODEL Name
-MODEL_NAME="neural-chat"
-#MODEL_NAME="mistral"
-#MODEL_NAME="mistral:7b-instruct-q6_K"
-#MODEL_NAME="openhermes2-mistral"
-#MODEL_NAME="zephyr"
-#MODEL_NAME="llama2:7b"
-#MODEL_NAME="mistral-openorca"
+MODEL_NAME="finetune-m01"
 
 ## MODEL parameter
-#MODEL_TEMPERATURE=0
 MODEL_TEMPERATURE=0.2
 
-ACTION_MODEL_NAME="neural-chat"
+ACTION_MODEL_NAME="finetune-action_01"
 ACTION_MODEL_TEMPERATURE=0
 
 # EMBEDDING_MODEL
@@ -138,12 +131,10 @@ EMBEDDING_MODEL_NAME="hkunlp/instructor-large"
 
 # VECTOR DB Location
 DB_DIRECTORY="./DB"
-#DB_DIRECTORY="./DB_TSM"
 
 # CHAT UI Configuration
-CHAT_UI_TITLE="IBM Storage Fusion AI Assistant"
-CHAT_UI_INPUT_PLACEHOLDER="Please ask me questions only for IBM Storage Fusion"
-#CHAT_UI_PORT
+CHAT_UI_TITLE="IBM Storage Fusion/Kubernetes AI Assistant"
+CHAT_UI_INPUT_PLACEHOLDER="Ask me question"
 CHAT_UI_PORT=5006
 
 # Vector DB source directory 
